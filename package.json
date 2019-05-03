@@ -4,10 +4,10 @@
   "description": "MYJAR TEST TASK",
   "main": "./src/app.js",
   "scripts": {
-    "start": "node $npm_package_main",
-    "debug": "node --nolazy --inspect-brk=2029 $npm_package_main",
+    "start": "node %npm_package_main%",
+    "debug": "node --nolazy --inspect-brk=2029 %npm_package_main%",
     "watch": "npm run watch:dev",
-    "watch:dev": "pm2 start $npm_package_main --name $npm_package_name --watch",
+    "watch:dev": "pm2 start %npm_package_main% --name %npm_package_name% --watch",
     "test": "mocha --timeout 10000 --recursive",
     "test:unit": "mocha --timeout 10000 --recursive test/unit",
     "test:integration": "mocha --timeout 10000 --recursive test/integration",

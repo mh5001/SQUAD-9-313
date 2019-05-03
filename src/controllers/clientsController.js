@@ -29,6 +29,13 @@ class ClientsController {
 
 		return { message: 'success' };
 	}
+
+	// PUT - Update a client
+	static async updateOne(req) {
+		const { clientId } = req.params;
+
+		return ClientModel.updateById(clientId, req.body);
+	}
 }
 
 

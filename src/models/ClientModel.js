@@ -17,9 +17,15 @@ class ClientModel {
 		return db.one(queries.clients.createOne, clientData);
 	}
 
-	// Delete Client by id
+	// Delete Client by ID
 	static async deleteById(clientId) {
 		return db.none(queries.clients.deleteOne, { clientId });
+	}
+
+	// Update Client by ID
+	static async updateById(clientId, clientData) {
+		clientData['clientId'] = clientId;
+		return db.none(queries.clients.updateOne, clientData);
 	}
 }
 
