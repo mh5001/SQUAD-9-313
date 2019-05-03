@@ -1,0 +1,1 @@
+select * from public.clients where id = ${ clientId }

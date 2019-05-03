@@ -1,0 +1,50 @@
+{
+  "name": "myjar-test-task-service",
+  "version": "1.0.0",
+  "description": "MYJAR TEST TASK",
+  "main": "./src/app.js",
+  "scripts": {
+    "start": "node $npm_package_main",
+    "debug": "node --nolazy --inspect-brk=2029 $npm_package_main",
+    "watch": "npm run watch:dev",
+    "watch:dev": "pm2 start $npm_package_main --name $npm_package_name --watch",
+    "test": "mocha --timeout 10000 --recursive",
+    "test:unit": "mocha --timeout 10000 --recursive test/unit",
+    "test:integration": "mocha --timeout 10000 --recursive test/integration",
+    "test:e2e": "mocha --timeout 10000 --recursive test/e2e",
+    "posttest": "npm run lint",
+    "lint": "eslint ./src",
+    "lint:fix": "npm run lint -- --fix",
+    "validate-swagger": "swagger-validator -s http://localhost:2020/swagger.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/myjar/software-test-task-base.git"
+  },
+  "author": "MYJAR IT OÜ",
+  "license": "ISC",
+  "dependencies": {
+    "config": "^3.0.1",
+    "express": "^4.16.4",
+    "pg-promise": "^8.6.4",
+    "request": "^2.88.0",
+    "request-promise-native": "^1.0.7",
+    "swagger-model-validator": "^3.0.8",
+    "winston": "^3.2.1"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "chai-http": "^4.0.0",
+    "chai-spies": "^1.0.0",
+    "eslint": "^4.7.2",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-filenames": "^1.2.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-mocha": "^4.11.0",
+    "mocha": "^5.0.1",
+    "testdouble": "^3.8.1"
+  },
+  "eslintConfig": {
+    "extends": "./eslintrc.js"
+  }
+}

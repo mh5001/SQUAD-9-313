@@ -1,0 +1,96 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "myjar-test-task-service.js",
+    "description": "MYJAR test-task-service.js"
+  },
+  "host": "test.myjar.com",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "basePath": "/api/myjar-test-task-service/",
+  "paths": {
+    "/api/v1/clients": {
+      "GET": {
+        "summary": "Gets all clients in database",
+        "responses": {
+          "200": {
+            "description": "List of clients or empty array"
+					},
+					"500": {
+						"description": "Something went wrong!"
+					}
+        }
+			},
+			"POST": {
+        "summary": "ClientModel",
+        "responses": {
+          "200": {
+            "description": "List of clients or empty array"
+          }
+        }
+      }
+		},
+		"/api/v1/clients/{id}": {
+      "GET": {
+				"summary": "ClientModel",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"description": "Client UUID v4",
+						"required": true
+					}
+				],
+        "responses": {
+          "200": {
+            "description": "Returns client data"
+          }
+        }
+			},
+			"DELETE": {
+				"summary": "ClientModel",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"description": "Client UUID v4",
+						"required": true
+					}
+				],
+        "responses": {
+          "200": {
+            "description": "Returns ok and client is deleted if exists"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "ClientModel": {
+      "properties": {
+        "firstname": {
+					"type": "string",
+					"minLength": 1,
+					"maxLength": 64
+				},
+				"surname": {
+					"type": "string",
+					"minLength": 1,
+					"maxLength": 64
+				},
+				"phoneNumber": {
+					"type": "string",
+					"pattern": "^\\+4407([0-9]{9,14})"
+				}
+      },
+      "required": ["firstname", "surname", "phoneNumber"]
+    }
+  }
+}
