@@ -25,6 +25,12 @@ class ClientModel {
 	// Update Client by ID
 	static async updateById(clientId, clientData) {
 		clientData['clientId'] = clientId;
+		// Make sure both firstname and surname exist
+		const previousData = await db.one(queries.clients.getOne, { clientId });
+		
+		if(!('firstname' in clientData)) clientData['firstname'] = previousData['firstname'];
+		if(!('surname' in clientData)) clientData['surname'] = previousData['surname'];
+
 		return db.none(queries.clients.updateOne, clientData);
 	}
 }
